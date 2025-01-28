@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PeviewerConfig(AppConfig):
+class StoryConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'peviewer'
+    name = 'story'

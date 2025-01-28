@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PecertificateConfig(AppConfig):
+class LikeandemojiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'pecertificate'
+    name = 'likeAndEmoji'

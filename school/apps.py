@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PepostConfig(AppConfig):
+class SchoolConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'pepost'
+    name = 'school'
