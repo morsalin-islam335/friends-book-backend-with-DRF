@@ -38,6 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "main",
+    "certificate",
+    "comment",
+    "experience",
+    "likeAndEmoji",
+    "photo",
+    "post",
+    "replay",
+    "school",
+    "story",
+    "university",
+    "video",
+    "viewer",
+    
+
 ]
 
 MIDDLEWARE = [
