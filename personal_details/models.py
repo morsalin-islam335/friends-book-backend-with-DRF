@@ -8,5 +8,5 @@ from django.db import models
 
 class PersonalDetails(models.Model):
     profession = models.CharField(max_length=40, null = True, blank = True)
-    dateOfBirth = models.DateField()
+    dateOfBirth = models.DateField(verbose_name="date of birth")
 
