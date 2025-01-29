@@ -6,8 +6,7 @@ from django.db import models
 
 
 
-class PersonalDetails(models.MOddel):
-    profession = models.TextField(max_length=40, null = True, blank = True)
+class PersonalDetails(models.Model):
+    profession = models.CharField(max_length=40, null = True, blank = True)
     dateOfBirth = models.DateField()
 
-    

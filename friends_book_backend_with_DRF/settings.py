@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "likeAndEmoji",
     "photo",
     "post",
+    "personal_details",
     "replay",
     "school",
     "story",
