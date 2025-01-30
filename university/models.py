@@ -10,5 +10,6 @@ class University(models.Model):
     startDate = models.DateField(verbose_name = "start date")
     expectedGraduateDate = models.DateField(verbose_name = "expected graduate date")
     PersonalDetails = models.ForeignKey(PersonalDetails, on_delete= models.CASCADE, null = True, blank = True)
+    name = models.CharField(max_length = 30)
 
 
