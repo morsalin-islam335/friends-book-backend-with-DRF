@@ -47,8 +47,9 @@ INSTALLED_APPS = [
     "personal_details",
     "replay",
     "school",
-    "story",
+    "collage",
     "university",
+    "story",
     "video",
     "viewer",
     "person"

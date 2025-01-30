@@ -11,5 +11,7 @@ class Collage(models.Model):
     expectedGraduateDate = models.DateField(verbose_name = "expected graduate date")
     PersonalDetails = models.ForeignKey(PersonalDetails, on_delete= models.CASCADE, null = True, blank = True)
     name = models.CharField(max_length = 30)
-
+    
+    def __str__(self):
+        return f"{self.name}"
 

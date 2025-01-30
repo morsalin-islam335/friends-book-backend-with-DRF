@@ -18,9 +18,5 @@ class Person(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
 
 
-
     def __str__(self):
         return f"{self.user.username} data"
-
-#after crash
-
