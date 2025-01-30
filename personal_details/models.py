@@ -11,5 +11,8 @@ class PersonalDetails(models.Model):
     person = models.OneToOneField(Person, on_delete= models.CASCADE)
     
 
+    def __str__(self):
+        return f"{self.person.user.username} personal details"
+    
 
 
