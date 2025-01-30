@@ -16,3 +16,6 @@ class Person(models.Model):
     isVerified = models.BooleanField(default = False)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+
+
+#after crash
