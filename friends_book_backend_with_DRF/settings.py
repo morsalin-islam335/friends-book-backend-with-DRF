@@ -51,10 +51,7 @@ INSTALLED_APPS = [
     "university",
     "video",
     "viewer",
-<<<<<<< HEAD
     "person"
-=======
->>>>>>> 39b37c98d3bc9c24d5cf7d24db19d899ee982453
     
 
 ]
