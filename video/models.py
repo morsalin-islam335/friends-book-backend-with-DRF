@@ -7,6 +7,8 @@ import os
 
 from person.models import Person
 
+from post.models import Post
+
 
 
 def validate_video_file(value):
@@ -36,6 +38,8 @@ class Video(models.Model):
     thumbnail = models.ImageField(upload_to="uploads/thumbnails/", blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     views = models.PositiveIntegerField(default=0)
+    post = models.ForeignKey(Post, on_delete = models.CASCADE, null = True, blank = True) # a post may have multiple video/videos
+    
 
     def __str__(self):
         return self.title
