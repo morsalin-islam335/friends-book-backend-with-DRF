@@ -25,4 +25,22 @@ class Story(models.Model):
 
 
 
+EMOJI_CHOICES = {
+    "like": "👍",     # Thumbs Up
+    "love": "❤️",     # Red Heart
+    "care": "🤗",     # Hugging Face
+    "haha": "😂",     # Face with Tears of Joy
+    "wow": "😮",      # Face with Open Mouth
+    "sad": "😢",      # Crying Face
+    "angry": "😡",    # Angry Face
+}
+
+
+
+class StoryEmoji(models.Model):
+    story = models.ForeignKey(Story, on_delete = models.CASCADE, related_name = "storyEmojies")
+    emojier = models.ForeignKey(Person, on_delete = models.CASCADE, related_name = "storyEmojies")
+    emoji = models.CharField(max_length=5, choices=EMOJI_CHOICES)
+
+
 
