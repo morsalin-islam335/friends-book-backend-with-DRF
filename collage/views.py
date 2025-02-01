@@ -8,5 +8,9 @@ from django.http import HttpResponse
 
 
 def dummy(request):
-    return HttpResponse("hello world")
+    data = [{
+        "name": "Satkhira Polytechnic Institue",
+        "location": "Satkhira"
+    }]
+    return HttpResponse(data)
     

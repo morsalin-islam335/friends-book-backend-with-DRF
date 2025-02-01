@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "viewer",
     "person",
      'rest_framework',
+     "api"
     
 
 ]
