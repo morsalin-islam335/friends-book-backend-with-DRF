@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     "story",
     "video",
     "viewer",
-    "person"
+    "person",
+     'rest_framework',
     
 
 ]
