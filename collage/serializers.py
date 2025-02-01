@@ -4,7 +4,7 @@ from . models import Collage
 
 
 
-class CertificateSerializer(serializers.ModelSerializer):
+class CollageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collage
         fields = "__all__"
