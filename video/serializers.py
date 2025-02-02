@@ -13,5 +13,4 @@ class VideoSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        field = "__all__"
-        
+        fields = "__all__"
