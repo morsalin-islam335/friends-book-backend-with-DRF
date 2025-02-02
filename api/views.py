@@ -53,11 +53,9 @@ def tags(request):
 def comment(request, id):
     try:
         comment = Comment.objects.get(id = id)
-    except comment.DoesNotExist:
-        return Response(status = status.HTTP_404_NOT_FOUND)
-    
-    if request.method == "GET":
         serializer = CommentSerializer(comment)
         return Response(serializer.data, status = status.HTTP_200_OK)
-        
+
+    except Comment.DoesNotExist:
+        return Response({"error": "Comment not found"}, status = status.HTTP_404_NOT_FOUND)
 
