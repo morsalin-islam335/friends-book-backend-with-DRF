@@ -29,7 +29,7 @@ def person(request):
 
     return JsonResponse(data)
 ############ Function Based View ###########
-@api_view(["GET"])
+@api_view(["GET","POST"])
 def tags(request):
     if request.method == "GET":
         tags = Tag.objects.all()
@@ -37,3 +37,8 @@ def tags(request):
         return Response(serializer.data, status = status.HTTP_200_OK)
 
 
+    elif request.method == "POST":
+        serializer = TagSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
