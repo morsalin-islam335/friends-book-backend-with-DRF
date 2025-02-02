@@ -28,7 +28,7 @@ def person(request):
     }
 
     return JsonResponse(data)
-
+############ Function Based View ###########
 @api_view(["GET"])
 def tags(request):
     if request.method == "GET":
