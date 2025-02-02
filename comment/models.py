@@ -15,7 +15,8 @@ class Comment(models.Model):
    photo = models.ForeignKey(Photo, on_delete = models.CASCADE, null = True, blank = True, related_name = "comments" )
    video = models.ForeignKey(Video, on_delete = models.CASCADE, null = True, blank = True, related_name = "comments" )
    post = models.ForeignKey(Post, on_delete = models.CASCADE, null = True, blank = True, related_name = "comments" )
-
+   text = models.CharField(max_length=500, null = True, blank = True)
+   
    parent = models.ForeignKey("self", on_delete = models.CASCADE, null = True, blank = True, related_name = "replaies")
 
    def __str__(self):
