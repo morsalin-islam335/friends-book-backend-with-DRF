@@ -6,5 +6,5 @@ from .models import Replay
 class ReplaySerializer(serializers.ModelSerializer):
     class Meta:
         model = Replay
-        field = "__all__"
+        fields = "__all__"
         

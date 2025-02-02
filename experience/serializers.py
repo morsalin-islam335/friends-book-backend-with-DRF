@@ -6,5 +6,5 @@ from .models import Experience
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
-        field = "__all__"
+        fields = "__all__"
         

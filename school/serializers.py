@@ -6,5 +6,5 @@ from .models import School
 class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
-        field = "__all__"
+        fields = "__all__"
         

@@ -6,5 +6,5 @@ from .models import Story
 class StorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Story
-        field = "__all__"
+        fields = "__all__"
         

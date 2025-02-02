@@ -13,12 +13,14 @@ from rest_framework.decorators import api_view
 from django.http import JsonResponse
 ######################################## importing models ##############
 from video.models import Tag
+from comment.models import Comment
 
 ########################################################################
 
 ############## importing serializer ##############################
 
 from video.serializers import * # video and tag serializer
+from comment.serializers import CommentSerializer
 ##################################################################
 
 def person(request):
@@ -44,4 +46,18 @@ def tags(request):
             return Response(serializer.data, status = status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
-            
+
+
+
+@api_view(["GET"])
+def comment(request, id):
+    try:
+        comment = Comment.objects.get(id = id)
+    except comment.DoesNotExist:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    
+    if request.method == "GET":
+        serializer = CommentSerializer(comment)
+        return Response(serializer.data, status = status.HTTP_200_OK)
+        
+

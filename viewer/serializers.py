@@ -6,5 +6,5 @@ from .models import Viewer
 class ViewerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Viewer
-        field = "__all__"
+        fields = "__all__"
         

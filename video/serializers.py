@@ -6,7 +6,7 @@ from .models import Video, Tag
 class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
-        field = "__all__"
+        fields = "__all__"
         
 
 
