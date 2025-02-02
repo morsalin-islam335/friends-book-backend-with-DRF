@@ -14,6 +14,7 @@ from django.http import JsonResponse
 ######################################## importing models ##############
 from video.models import Tag
 from comment.models import Comment
+from likeAndEmoji.models import Emoji
 
 ########################################################################
 
@@ -21,6 +22,7 @@ from comment.models import Comment
 
 from video.serializers import * # video and tag serializer
 from comment.serializers import CommentSerializer
+from likeAndEmoji.serializers import EmojiSerializer
 ##################################################################
 
 def person(request):
@@ -58,4 +60,33 @@ def comment(request, id):
 
     except Comment.DoesNotExist:
         return Response({"error": "Comment not found"}, status = status.HTTP_404_NOT_FOUND)
+
+# update api function based view
+@api_view(["PUT", "GET"])
+def postEmoji(request,id):
+    try:
+        emoji = Emoji.objects.get(id = id)
+        
+    
+    except Emoji.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+
+    if request.method == "PUT":
+        # update
+        serializer = EmojiSerializer(emoji, data = request.data)
+        # as it is  put request, we can get previous data by using request.data
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        
+        else:
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    if request.method == "GET":
+        serializer = EmojiSerializer(emoji)
+        return Response(serializer.data, status  =  status.HTTP_200_OK)
+    
+
 
