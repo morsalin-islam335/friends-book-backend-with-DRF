@@ -134,12 +134,33 @@ def postEmoji(request,id):
 
 ##### now working with class based view
 
+# class CollageView(APIView): #inherit API View
+#     def get(self, request, **kwargs):
+#         try:
+#             person = Person.objects.get(id = kwargs.get("pid"))
+           
+#             collage = Collage.objects.get(id=kwargs.get("cid"), PersonalDetails=person.personalDetails)
+             
+
+#         except Person.DoesNotExist:
+#             return Response({"error": "There is no person with this person id"}, status = status.HTTP_404_NOT_FOUND, )
+        
+#         except Collage.DoesNotExist:
+#             return Response({"error": "There is no Collage with this collage id"}, status = status.HTTP_404_NOT_FOUND, )
+        
+#         serializer = CollageSerializer(collage)
+#         return Response(serializer.data, status = status.HTTP_200_OK)
+
+
 class CollageView(APIView): #inherit API View
     def get(self, request, **kwargs):
         try:
-            person = Person.objects.get(id = kwargs.get("pid"))
            
-            collage = Collage.objects.get(id=kwargs.get("cid"), PersonalDetails=person.personalDetails)
+            person = Person.objects.get(id=kwargs.get("pid"))
+            collage = Collage.objects.get(
+                id=kwargs.get("cid"),
+                PersonalDetails= person.personalDetails  
+            )
              
 
         except Person.DoesNotExist:
@@ -150,7 +171,6 @@ class CollageView(APIView): #inherit API View
         
         serializer = CollageSerializer(collage)
         return Response(serializer.data, status = status.HTTP_200_OK)
-
 
 
 
