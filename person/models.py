@@ -15,7 +15,8 @@ class Person(models.Model):
 
     isVerified = models.BooleanField(default = False)
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, unique=True, related_name = "person")
+    
 
 
     def __str__(self):

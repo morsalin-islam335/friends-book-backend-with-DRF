@@ -34,8 +34,8 @@ class Video(models.Model):
 
     description = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag, blank=True)
-    video = models.FileField(upload_to="uploads/videos/", validators=[validate_video_file])
-    thumbnail = models.ImageField(upload_to="uploads/thumbnails/", blank=True, null=True)
+    video = models.FileField(upload_to="video/uploads/videos/", validators=[validate_video_file])
+    thumbnail = models.ImageField(upload_to="video/uploads/thumbnails/", blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     views = models.PositiveIntegerField(default=0)
     post = models.ForeignKey(Post, on_delete = models.CASCADE, null = True, blank = True) # a post may have multiple video/videos
