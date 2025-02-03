@@ -173,6 +173,25 @@ class CollageView(APIView): #inherit API View
         return Response(serializer.data, status = status.HTTP_200_OK)
 
 
+class ExperienceListView(APIView):
+    def get(self, request, **kwargs):
+        try:
+            experience = Experience.objects.filter(
+            person = Person.objects.get(id = kwargs.get("pid"))
+            )
+        except Person.DoesNotExist:
+            return Response({"error": "There is no person with this personID"},status = status.HTTP_404_NOT_FOUND)
+        
+
+        serializer = ExperienceSerializer(experience, many = True)
+        return Response(serializer.data, status = status.HTTP_200_OK)
+
+
+
+
+
+######## post ##########
+
 
             
         
