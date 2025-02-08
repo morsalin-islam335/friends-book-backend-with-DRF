@@ -5,7 +5,7 @@ from . views import *
 
 urlpatterns = [
   
-    path("persons/"), # get  all persons list
+    path("persons/", PersonListView.as_view()), # get  all persons list
     # path("persons/<int:pid>"), # get and delete single person
 
     # path("persons/<int:pID>/shcools/>"), # get all schools

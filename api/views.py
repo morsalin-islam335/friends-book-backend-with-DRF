@@ -11,6 +11,10 @@ from rest_framework import status
 
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from rest_framework import generics
+from rest_framework.generics import ListAPIView
+
+
 
 ####################################
 
@@ -58,13 +62,13 @@ from viewer.serializers import ViewerSerializer
 
 ##################################################################
 
-def person(request):
-    data ={
-        "name": "Morsalin Islam",
-        "profession": "backend developer"
-    }
+# def person(request):
+#     data ={
+#         "name": "Morsalin Islam",
+#         "profession": "backend developer"
+#     }
 
-    return JsonResponse(data)
+#     return JsonResponse(data)
 ############ Function Based View ###########
 @api_view(["GET","POST"])
 def tags(request):
@@ -204,6 +208,12 @@ class ExperienceListView(APIView):
 
 # now have to make actual api end point
             
+class PersonListView(generics.GenericAPIView, ListAPIView):
+    serializer_class = PersonSerializer
+    queryset = Person
+
+    def get(self, request):
+        return self.get(request)     
         
-        
+
         
