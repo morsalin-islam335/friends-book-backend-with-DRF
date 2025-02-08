@@ -208,12 +208,12 @@ class ExperienceListView(APIView):
 
 # now have to make actual api end point
             
-class PersonListView(generics.GenericAPIView, ListAPIView):
+class PersonListView( ListAPIView, generics.GenericAPIView,):
     serializer_class = PersonSerializer
-    queryset = Person
+    queryset = Person.objects.all()
 
     def get(self, request):
-        return self.get(request)     
-        
+        return self.list(request)     
+
 
         

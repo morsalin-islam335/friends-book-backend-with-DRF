@@ -13,7 +13,7 @@ urlpatterns = [
     # path("persons/<int:pID>/collages/", CollageView.as_view()), # get all collages
     # path("persons/<int:pID>/collages/<cID:", CollageView.as_view()), # get, update and delete single collage
 
-    path("persons/<int:pID>/experiencses/", ExperienceListView.as_view()), # get all experiences
+    # path("persons/<int:pID>/experiencses/", ExperienceListView.as_view()), # get all experiences
 
     # path("persons/<int:pID>/experiences/<int:exID>"), # update and delete single experience
 
