@@ -12,7 +12,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics
-from rest_framework.generics import ListAPIView
+from rest_framework import mixins
 
 
 
@@ -208,12 +208,37 @@ class ExperienceListView(APIView):
 
 # now have to make actual api end point
             
-class PersonListView( ListAPIView, generics.GenericAPIView,):
+class PersonListView(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView,):
     serializer_class = PersonSerializer
-    queryset = Person.objects.all()
+    queryset = Person.objects.all() # just necessary for new object
 
     def get(self, request):
-        return self.list(request)     
+        return self.list(request)
+
+    def post(self, request):
+        return self.create(request)     
 
 
+# class PersonView(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+
+#     serializer_class = PersonSerializer
+#     queryset = Person.objects.all()
+
+#     def get(self,request, *args, **kwargs):
+#         return self.retrieve(request,*args, kwargs)
+
+
+    
+
+class PersonView(mixins.RetrieveModelMixin, 
+                 mixins.UpdateModelMixin, 
+                 mixins.DestroyModelMixin, 
+                 generics.GenericAPIView):
+
+    serializer_class = PersonSerializer
+    queryset = Person.objects.all()
+  
+
+    def get(self, request, *args, **kwargs):  
+        return self.retrieve(request, *args, **kwargs)  # Correct unpacking
         

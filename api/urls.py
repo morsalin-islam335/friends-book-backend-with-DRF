@@ -6,7 +6,7 @@ from . views import *
 urlpatterns = [
   
     path("persons/", PersonListView.as_view()), # get  all persons list
-    # path("persons/<int:pid>"), # get and delete single person
+    path("persons/<int:pk>", PersonView.as_view()), # get,  update and delete single person
 
     # path("persons/<int:pID>/shcools/>"), # get all schools
     # path("persons/<int:pID>/shcools/<int:scId>"), # get, update, delete single school object
