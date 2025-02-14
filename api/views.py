@@ -247,12 +247,7 @@ class PersonView(mixins.RetrieveModelMixin,
         
 
 
-# class SchoolView(generics.ListCreateAPIView,generics.GenericAPIView):
-#     queryset = School.objects.all()
-#     serializer_class = SchoolSerializer()
-#     def get(self, request):
-#         return self.get(request)
-
-
-def schoolView(request, **kwargs):
-    return HttpResponse("School view endpint")
+class SchoolView(generics.ListCreateAPIView,generics.GenericAPIView):
+    queryset = School.objects.all()
+    serializer_class = SchoolSerializer
+  
