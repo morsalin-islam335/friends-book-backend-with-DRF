@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 
-from django.shortcuts import get_object_or_404
+# from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 # Create your views here.
 ############## import from rest framework ###########
@@ -59,6 +60,8 @@ from university.serializers import UniversitySerializer
 from video.serializers import VideoSerializer
 from video.serializers import TagSerializer
 from viewer.serializers import ViewerSerializer
+from school.serializers import SchoolSerializer
+
 
 ##################################################################
 
@@ -242,3 +245,14 @@ class PersonView(mixins.RetrieveModelMixin,
     def get(self, request, *args, **kwargs):  
         return self.retrieve(request, *args, **kwargs)  # Correct unpacking
         
+
+
+# class SchoolView(generics.ListCreateAPIView,generics.GenericAPIView):
+#     queryset = School.objects.all()
+#     serializer_class = SchoolSerializer()
+#     def get(self, request):
+#         return self.get(request)
+
+
+def schoolView(request, **kwargs):
+    return HttpResponse("School view endpint")
