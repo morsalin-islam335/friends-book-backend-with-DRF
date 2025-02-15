@@ -291,6 +291,7 @@ class SchoolView(generics.RetrieveUpdateDestroyAPIView):
     #     return School.objects.filter(id = self.kwargs.get("scID"))
     lookup_field = "id"  # Match the URL parameter
     lookup_url_kwarg="scID"
+    # formula : use main models primary key and last child model forignkey 
 
     def get_queryset(self):
         return School.objects.filter(id=self.kwargs.get("scID"))
