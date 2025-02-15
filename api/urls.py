@@ -5,11 +5,13 @@ from . views import *
 
 urlpatterns = [
   
-    path("persons/", PersonListView.as_view()), # get  all persons list
-    path("persons/<int:pk>/", PersonView.as_view()), # get,  update and delete single person
+    path("persons/", PersonListView.as_view(), name = "allPersons"), # get  all persons list
+    path("persons/<int:pk>/", PersonView.as_view(), name = "singlePerson"), # get,  update and delete single person
 
-    path("persons/<int:pID>/schools/", SchoolView.as_view()), # get all schools
-    # path("persons/<int:pID>/shcools/<int:scId>"), # get, update, delete single school object
+    path("persons/<int:pID>/schools/", SchoolListview.as_view(), name = "allSchools"), # get all schools
+    # path("persons/<int:pID>/schools/<int:scID>/", SchoolView.as_view(), name = "singleSchool"), # get, update, delete single school object
+    path("persons/<int:pID>/schools/<int:id>/", SchoolView.as_view(), name="singleSchool"),
+
     # path("persons/<int:pID>/collages/", CollageView.as_view()), # get all collages
     # path("persons/<int:pID>/collages/<cID:", CollageView.as_view()), # get, update and delete single collage
 

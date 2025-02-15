@@ -247,7 +247,49 @@ class PersonView(mixins.RetrieveModelMixin,
         
 
 
-class SchoolView(generics.ListCreateAPIView,generics.GenericAPIView):
-    queryset = School.objects.all()
+# class SchoolListview(generics.ListCreateAPIView):
+#     # queryset = School.objects.all() # to apply query we have to override get_queryset method
+#     serializer_class = SchoolSerializer
+#     def get_queryset(self):
+#         try:
+#             person = Person.objects.get(pk = self.kwargs.get("pID"))
+#             schools = School.objects.filter(
+#                 # id = self.kwargs.get("scID"),
+#                 PersonalDetails= person.personalDetails  
+#             )
+#             return schools
+       
+
+#         except Person.DoesNotExist:
+#             raise Exception( "There is no person with this person id")
+        
+
+class SchoolListview(generics.ListCreateAPIView):
     serializer_class = SchoolSerializer
-  
+
+    def get_queryset(self):
+        person_id = self.kwargs.get("pID")
+        try:
+            person = Person.objects.get(pk=person_id)
+            return School.objects.filter(PersonalDetails=person.personalDetails)
+        except Person.DoesNotExist:
+            return School.objects.none()  # Return an empty queryset instead of raising an exception
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        if not queryset:
+            return Response({"error": "There is no person with this person id"}, status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+## retrive, update and delete
+class SchoolView(generics.RetrieveUpdateDestroyAPIView):
+    # queryset = School.objects.all()
+    serializer_class = SchoolSerializer
+    # lookup_field = "id"
+    # def get_queryset(self):
+    #     return School.objects.filter(id = self.kwargs.get("scID"))
+    lookup_field = "id"  # Match the URL parameter
+
+    def get_queryset(self):
+        return School.objects.filter(id=self.kwargs.get("id"))
