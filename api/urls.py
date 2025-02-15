@@ -10,7 +10,7 @@ urlpatterns = [
 
     path("persons/<int:pID>/schools/", SchoolListview.as_view(), name = "allSchools"), # get all schools
     # path("persons/<int:pID>/schools/<int:scID>/", SchoolView.as_view(), name = "singleSchool"), # get, update, delete single school object
-    path("persons/<int:pID>/schools/<int:id>/", SchoolView.as_view(), name="singleSchool"),
+    path("persons/<int:pID>/schools/<int:scID>/", SchoolView.as_view(), name="singleSchool"),
 
     # path("persons/<int:pID>/collages/", CollageView.as_view()), # get all collages
     # path("persons/<int:pID>/collages/<cID:", CollageView.as_view()), # get, update and delete single collage
