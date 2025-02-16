@@ -290,8 +290,19 @@ class SchoolView(generics.RetrieveUpdateDestroyAPIView):
     # def get_queryset(self):
     #     return School.objects.filter(id = self.kwargs.get("scID"))
     lookup_field = "id"  # Match the URL parameter
+    # since we work with single object,so to work with it, we have to select lookup field
+    
     lookup_url_kwarg="scID"
     # formula : use main models primary key and last child model forignkey 
 
     def get_queryset(self):
         return School.objects.filter(id=self.kwargs.get("scID"))
+
+# ############ in generics there is no need post and get method
+
+class UniversityListView(generics.ListCreateAPIView):
+    serializer_class = UniversitySerializer
+    lookup_field = "id"
+    
+    def get_queryset(self):
+        
