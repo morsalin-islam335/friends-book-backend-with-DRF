@@ -291,18 +291,31 @@ class SchoolView(generics.RetrieveUpdateDestroyAPIView):
     #     return School.objects.filter(id = self.kwargs.get("scID"))
     lookup_field = "id"  # Match the URL parameter
     # since we work with single object,so to work with it, we have to select lookup field
-    
+
     lookup_url_kwarg="scID"
     # formula : use main models primary key and last child model forignkey 
 
     def get_queryset(self):
         return School.objects.filter(id=self.kwargs.get("scID"))
+   
+
 
 # ############ in generics there is no need post and get method
 
 class UniversityListView(generics.ListCreateAPIView):
     serializer_class = UniversitySerializer
-    lookup_field = "id"
-    
+
     def get_queryset(self):
-        
+            person_id = self.kwargs.get("pID")
+            try:
+                person = Person.objects.get(pk=person_id)
+                return University.objects.filter(PersonalDetails=person.personalDetails)
+            except Person.DoesNotExist:
+                return University.objects.none()  # Return an empty queryset instead of raising an exception
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        if not queryset:
+            return Response({"error": "There is no person with this person id"}, status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
