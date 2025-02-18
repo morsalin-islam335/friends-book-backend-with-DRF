@@ -319,3 +319,5 @@ class UniversityListView(generics.ListCreateAPIView):
             return Response({"error": "There is no person with this person id"}, status=status.HTTP_404_NOT_FOUND)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+## Today -> offday
