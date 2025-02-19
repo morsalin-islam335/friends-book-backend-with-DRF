@@ -321,3 +321,4 @@ class UniversityListView(generics.ListCreateAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 ## Today -> offday
+# WednessDay -> Offday
