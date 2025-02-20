@@ -322,3 +322,5 @@ class UniversityListView(generics.ListCreateAPIView):
 
 ## Today -> offday
 # WednessDay -> Offday
+
+# ThirsDay => Offday
